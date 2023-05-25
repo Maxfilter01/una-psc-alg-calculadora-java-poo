@@ -9,8 +9,10 @@ public class Calculadora{
 
         while(true){
         System.out.println("Qual operação deseja fazer? (+, -, *, /, ^, !)");
-        String simbolo = scanner.next();
-
+        String simbolo = scanner.next().toUpperCase();
+        if(simbolo.equals("Q")){
+            break;
+        }
         System.out.println("Informe o primeiro número: ");
         operacoes.setNumeroUm(scanner.nextDouble());
 
@@ -19,36 +21,47 @@ public class Calculadora{
         
         if(simbolo.equals("+")){
             double resultadosoma = operacoes.somar();
+            System.out.println("O resultado da soma é: " + resultadosoma);
 
         }
         else if(simbolo.equals("-")){
             double resultadosubtrair = operacoes.subtrair();
+            System.out.println("O resultado da subtração é: " + resultadosubtrair);
             
         }
         else if(simbolo.equals("*")){
             double resultadomultiplicar = operacoes.multiplicar();
+            System.out.println("O resultado da multiplicação é: " + resultadomultiplicar);
             
         }
         else if(simbolo.equals("/")){
+            if(operacoes.getNumeroDois() == 0){
+                System.out.println("Impossível realizar divisão por zero.");
+                break;
+        }else{
             double resultadodividir = operacoes.dividir();
-            
+            System.out.println("O resultado da divisão é: " + resultadodividir);
+        }
+             
         }
         else if(simbolo.equals("^")){
             double resultadopotencia = operacoes.potencia();
+            System.out.println("O resultado da potencia é: " + resultadopotencia);
             
         }
         else if(simbolo.equals("!")){
+            if(operacoes.getNumeroUm() < 0){
+            System.out.println("Não existe raiz de número negativo.");
+            break;
+
+        }else{
             double resultadoraiz = operacoes.raiz();
+            System.out.println("O resultado da raiz é: " + resultadoraiz);
+        }
             
         }
         
-    
-    
+        }
+        scanner.close();
     }
-        
-            
-    }
-    
-        
-
-    }
+ }
